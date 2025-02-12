@@ -1,30 +1,31 @@
+import { useEffect } from 'react';
 import { definePageConfig, useSearchParams } from 'ice';
 
 import AdsBanner from '@/components/Biz/AdsBanner';
-import Player from '@/components/Biz/Player';
 import BlockList from '@/components/Biz/BlockList';
-import TagList from '@/components/Biz/TagList';
 
-import { DataBlockList, DataTagList } from '../index/data';
+import { DataBlockList } from '../index/data';
 
-export default function Detail() {
+export default function Tag() {
   const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
       <AdsBanner />
-      <Player slug={searchParams.get('slug') || ''} />
       <BlockList
-        title="相关推荐"
+        title={`与 ${searchParams.get('tag') || ''} 相关的视频`}
         list={DataBlockList}
       />
-      <TagList list={DataTagList} />
     </>
   );
 }
 
 export const pageConfig = definePageConfig(() => {
   return {
-    title: 'Video',
+    title: 'Tag',
   };
 });
