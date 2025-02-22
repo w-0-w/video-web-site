@@ -1,4 +1,7 @@
 import { CSSProperties } from 'react';
+import { Link } from 'ice';
+
+import styles from './index.module.css';
 
 const LeftLogoStyles: CSSProperties = {
   position: 'relative',
@@ -20,48 +23,54 @@ const RedPointStyles: CSSProperties = {
 
 export function Logo() {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}
+    <Link
+      to={'/'}
+      className={styles.logo}
     >
       <div
         style={{
-          position: 'relative',
-        }}
-      >
-        <div style={LeftLogoStyles}>
-          <div style={RedPointStyles} />5
-        </div>
-        <div style={LeftLogoStyles}>MA</div>
-      </div>
-      <div
-        style={{
           display: 'flex',
+          flexDirection: 'row',
           alignItems: 'center',
-          height: '24px',
-          border: '1.5px solid red',
-          borderRadius: '12px',
-          marginLeft: '8px',
-          padding: '0 18px',
         }}
       >
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            height: '16px',
-            fontSize: '14px',
+            position: 'relative',
           }}
         >
-          <span>5</span>
-          <span>
-            <span style={{ color: 'red' }}>ma</span>.com
-          </span>
+          <div style={LeftLogoStyles}>
+            <div style={RedPointStyles} />5
+          </div>
+          <div style={LeftLogoStyles}>MA</div>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            height: '24px',
+            border: '1.5px solid red',
+            borderRadius: '12px',
+            marginLeft: '8px',
+            padding: '0 18px',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              height: '16px',
+              fontSize: '14px',
+              color: '#fff',
+            }}
+          >
+            <span>5</span>
+            <span>
+              <span style={{ color: 'red' }}>ma</span>.com
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

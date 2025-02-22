@@ -1,0 +1,9 @@
+.logo {
+  user-select: none;
+}
+
+.logo:visited,
+.logo:link {
+  color: #fff;
+  text-decoration: none;
+}
