@@ -24,7 +24,7 @@ export default function BlockList({
     >
       <div
         style={{
-          fontSize: '20px',
+          fontSize: '24px',
           fontWeight: 'bold',
           margin: '20px 0 6px',
         }}

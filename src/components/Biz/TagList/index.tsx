@@ -18,18 +18,14 @@ export default function TagList({
         margin: '32px auto 0',
       }}
     >
-      {(list || []).map(({ tagId, tagLabel, flagAll }) => {
+      {(list || []).map(({ tagId, tagLabel }) => {
         return (
           <Tag
             key={tagId}
-            type={flagAll ? 'secondary' : 'normal'}
+            type="secondary"
             shape="link"
             onClick={() => {
-              if (flagAll) {
-                navigate('/tags');
-              } else {
-                navigate(`/tag?id=${tagId}&tag=${tagLabel}`);
-              }
+              navigate(`/tag?id=${tagId}&tag=${tagLabel}`);
             }}
           >
             {tagLabel}

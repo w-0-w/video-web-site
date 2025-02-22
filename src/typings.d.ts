@@ -11,7 +11,6 @@ type TTypeBlockList = TTypeBlockListItem[];
 type TTypeTagListItem = {
   tagLabel: string;
   tagId: string;
-  flagAll?: boolean;
 };
 
 type TTypeTagList = TTypeTagListItem[];

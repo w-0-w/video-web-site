@@ -1,0 +1,38 @@
+body {
+  font-family: CustomFont !important;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+
+  .next-shell-header {
+    /* origin: 52px */
+    height: 88px !important;
+    padding: 0 30px !important;
+    background: #000000 !important;
+  }
+
+  /* 页面主体 */
+  .next-shell-main {
+    /* background: linear-gradient(
+      to bottom,
+      #090812,
+      #111520 100vh,
+      #07090e 200vh
+    ) !important; */
+    background: #141414 !important;
+  }
+
+  .next-tag {
+    border-color: #666 !important;
+    cursor: pointer !important;
+    &:hover {
+      border-color: #ddd !important;
+    }
+  }
+  .next-tag-body {
+    cursor: pointer !important;
+  }
+
+  .next-loading {
+    position: unset;
+  }
+}

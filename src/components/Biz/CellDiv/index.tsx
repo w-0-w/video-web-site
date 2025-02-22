@@ -33,7 +33,7 @@ export default function CellDiv({
           display: 'flex',
           width: '100%',
           height: 'calc(100% - 26px)',
-          backgroundColor: '#ddd',
+          backgroundColor: '#333',
           borderRadius: '4px',
           overflow: 'hidden',
         }}

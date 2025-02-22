@@ -3,12 +3,13 @@ import { Outlet, useLocation } from 'ice';
 import { Shell, ConfigProvider } from '@alifd/next';
 import store from '@/store';
 // import logo from '@/assets/logo.png';
-import logo from '@/assets/logo.jpg';
+// import logo from '@/assets/logo.jpg';
 import Footer from '@/components/Footer';
 // import HeaderAvatar from '@/components/HeaderAvatar';
 // import Notice from '@/components/Notice';
 // import GlobalSearch from '@/components/GlobalSearch';
-import Logo from '@/components/Logo';
+// import Logo from '@/components/Logo';
+import { Logo } from '@/components/Biz/Logo';
 
 interface IGetDevice {
   (width: number): 'phone' | 'tablet' | 'desktop';
@@ -56,10 +57,11 @@ export default function Layout() {
         fixedHeader={false}
       >
         <Shell.Branding>
-          <Logo
+          {/* <Logo
             image={logo}
             text="Video Site"
-          />
+          /> */}
+          <Logo />
         </Shell.Branding>
         {/* <Shell.Navigation
           direction="hoz"

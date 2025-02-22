@@ -84,9 +84,4 @@ export const DataTagList: TTypeTagList = [
     tagLabel: '最新',
     tagId: '9',
   },
-  {
-    tagLabel: '所有标签 >>',
-    tagId: '-',
-    flagAll: true,
-  },
 ];

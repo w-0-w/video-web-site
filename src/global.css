@@ -1,20 +1,8 @@
 @import '@alifd/theme-design-pro/variables.css';
 @import '@alifd/theme-design-pro/dist/next.var.css';
 
-body {
-  -webkit-font-smoothing: antialiased;
-
-  .next-tag {
-    cursor: pointer !important;
-  }
-  .next-tag-body {
-    cursor: pointer !important;
-  }
-}
-
-.next-loading {
-  position: unset;
-}
+@import './styles/font.css';
+@import './styles/reset-next.css';
 
 .t-over-1 {
   width: 100%;
