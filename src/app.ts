@@ -1,54 +1,51 @@
-import { defineAppConfig, history, defineDataLoader } from 'ice';
-import { fetchUserInfo } from './services/user';
+import {
+  //
+  defineAppConfig,
+  // history,
+  defineDataLoader,
+} from 'ice';
 import { defineAuthConfig } from '@ice/plugin-auth/types';
 import { defineStoreConfig } from '@ice/plugin-store/types';
-import { defineRequestConfig } from '@ice/plugin-request/types';
+
+import { queryTagList } from '@/api';
 
 // App config, see https://v3.ice.work/docs/guide/basic/app
 export default defineAppConfig(() => ({}));
 
-export const authConfig = defineAuthConfig(async (appData) => {
-  const { userInfo = {} } = appData;
-  if (userInfo.error) {
-    history?.push(`/login?redirect=${window.location.pathname}`);
-  }
-  return {
-    initialAuth: {
-      admin: userInfo.userType === 'admin',
-      user: userInfo.userType === 'user',
-    },
-  };
-});
+export const authConfig = defineAuthConfig(
+  async (
+    //
+    _appData,
+  ) => {
+    // const { userInfo = {} } = appData;
+    // if (userInfo.error) {
+    //   history?.push(`/login?redirect=${window.location.pathname}`);
+    // }
+    return {
+      initialAuth: {
+        // admin: userInfo.userType === 'admin',
+        // user: userInfo.userType === 'user',
+        admin: true,
+        user: true,
+      },
+    };
+  },
+);
 
 export const storeConfig = defineStoreConfig(async (appData) => {
-  const { userInfo = {} } = appData;
+  const { tagList } = appData;
   return {
     initialStates: {
-      user: {
-        currentUser: userInfo,
+      video: {
+        tagList,
       },
     },
   };
 });
 
-export const request = defineRequestConfig(() => ({
-  baseURL: '/api',
-}));
-
 export const dataLoader = defineDataLoader(async () => {
-  const userInfo = await getUserInfo();
+  const { data } = await queryTagList();
   return {
-    userInfo,
+    tagList: data || [],
   };
 });
-
-async function getUserInfo() {
-  try {
-    const userInfo = await fetchUserInfo();
-    return userInfo;
-  } catch (error) {
-    return {
-      error,
-    };
-  }
-}

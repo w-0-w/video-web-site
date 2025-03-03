@@ -4,8 +4,6 @@ import { definePageConfig, useSearchParams } from 'ice';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import BlockList from '@/components/Biz/BlockList';
 
-import { DataBlockList } from '../index/data';
-
 export default function Tag() {
   const [searchParams] = useSearchParams();
 
@@ -16,10 +14,7 @@ export default function Tag() {
   return (
     <>
       <AdsBanner />
-      <BlockList
-        title={`与 ${searchParams.get('tag') || ''} 相关的视频`}
-        list={DataBlockList}
-      />
+      <BlockList scene="tag-item" />
     </>
   );
 }

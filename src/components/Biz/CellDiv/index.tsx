@@ -6,7 +6,7 @@ export default function CellDiv({
 }: {
   detail: TTypeBlockListItem;
 }) {
-  const { title, img } = detail;
+  const { name, coverImageUrl } = detail;
   const navigate = useNavigate();
 
   return (
@@ -39,7 +39,7 @@ export default function CellDiv({
         }}
       >
         <img
-          src={img}
+          src={coverImageUrl}
           style={{
             position: 'absolute',
             top: 0,
@@ -59,7 +59,7 @@ export default function CellDiv({
           fontWeight: 'bold',
         }}
       >
-        {title}
+        {name}
       </div>
     </div>
   );

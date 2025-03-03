@@ -1,13 +1,12 @@
 import { useNavigate } from 'ice';
 import { Tag } from '@alifd/next';
 
-export default function TagList({
-  //
-  list,
-}: {
-  list: TTypeTagList;
-}) {
+import { useTagList } from '@/hooks';
+
+export default function TagList() {
   const navigate = useNavigate();
+  const tagList = useTagList();
+
   return (
     <div
       style={{
@@ -18,17 +17,17 @@ export default function TagList({
         margin: '32px auto 0',
       }}
     >
-      {(list || []).map(({ tagId, tagLabel }) => {
+      {(tagList || []).map(({ tagId, tagName }) => {
         return (
           <Tag
             key={tagId}
             type="secondary"
             shape="link"
             onClick={() => {
-              navigate(`/tag?id=${tagId}&tag=${tagLabel}`);
+              navigate(`/tag?id=${tagId}&tag=${tagName}`);
             }}
           >
-            {tagLabel}
+            {tagName}
           </Tag>
         );
       })}

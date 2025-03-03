@@ -12,12 +12,6 @@ body {
 
   /* 页面主体 */
   .next-shell-main {
-    /* background: linear-gradient(
-      to bottom,
-      #090812,
-      #111520 100vh,
-      #07090e 200vh
-    ) !important; */
     background: #141414 !important;
   }
 
@@ -34,5 +28,38 @@ body {
 
   .next-loading {
     position: unset;
+  }
+
+  .next-pagination-item {
+    border-color: #666 !important;
+    background: #222 !important;
+    color: #fff !important;
+    &:hover {
+      border-color: #fff !important;
+    }
+    &.next-current {
+      border-color: #209bfa !important;
+      background: #209bfa !important;
+    }
+    &.next-prev,
+    &.next-next {
+      border-color: #666 !important;
+      background: #222 !important;
+      color: #fff !important;
+      &:disabled {
+        color: #666 !important;
+        &:hover {
+          /*  */
+        }
+      }
+      &:not([disabled]) {
+        & > i {
+          color: #fff !important;
+        }
+        &:hover {
+          border-color: #fff !important;
+        }
+      }
+    }
   }
 }

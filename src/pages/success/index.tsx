@@ -1,5 +1,4 @@
 import PageHeader from '@/components/PageHeader';
-import SuccessDetail from '@/components/SuccessDetail';
 import { ResponsiveGrid } from '@alifd/next';
 import { definePageConfig } from 'ice';
 
@@ -21,7 +20,7 @@ export default function Success() {
       </Cell>
 
       <Cell colSpan={12}>
-        <SuccessDetail />
+        {/* <SuccessDetail /> */}
       </Cell>
     </ResponsiveGrid>
   );

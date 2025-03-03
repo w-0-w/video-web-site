@@ -4,17 +4,12 @@ import AdsBanner from '@/components/Biz/AdsBanner';
 import BlockList from '@/components/Biz/BlockList';
 import TagList from '@/components/Biz/TagList';
 
-import { DataBlockList, DataTagList } from './data';
-
-export default function Home() {
+export default function Index() {
   return (
     <>
       <AdsBanner />
-      <BlockList
-        title="推荐"
-        list={DataBlockList}
-      />
-      <TagList list={DataTagList} />
+      <BlockList scene="home" />
+      <TagList />
     </>
   );
 }
