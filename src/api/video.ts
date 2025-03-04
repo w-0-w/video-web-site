@@ -2,16 +2,11 @@ import { apiClient } from '@/utils';
 
 export const queryTagList = () => apiClient.get('/api/videoWeb/tag/list');
 
-const queryVideoList = (data: TTypeQueryVideoListParams) =>
+export const queryVideoList = (data: TTypeQueryVideoListParams) =>
   apiClient.post('/api/videoWeb/video/page/list', data);
 
-export const queryVideoListLatest = (
-  basicParams: TTypeQueryVideoListBasicParams,
-) =>
-  queryVideoList({
-    ...basicParams,
-    type: 1,
-  });
+export const queryVideoDetail = (id: string) =>
+  apiClient.get(`/api/videoWeb/video/dtl?id=${id}`);
 
 // // 创建新用户
 // export const createUser = (userData) => apiClient.post('/users', userData);

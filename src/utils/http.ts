@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 创建axios实例
 export const apiClient = axios.create({
-  baseURL: 'http://5ma.org',
+  baseURL: process.env.NODE_ENV === 'production' ? 'http://5ma.org' : '',
   timeout: 10000,
   headers: { APP_ID: 'oqzrb688GfoQ94peiB4OMw==' },
 });

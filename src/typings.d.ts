@@ -23,13 +23,10 @@ type TTypeTagList = TTypeTagListItem[];
 
 //
 
-type TTypeQueryVideoListBasicParams = {
+type TTypeQueryVideoListParams = {
   pageSize: number; // 页面大小
   pageNo: number; // 当前页号
-  lastVideoId: number; // 上一页最后一个视频的ID，方便后面用于实现瀑布流分页
-};
-
-type TTypeQueryVideoListParams = TTypeQueryVideoListBasicParams & {
+  lastVideoId?: number; // 上一页最后一个视频的ID，方便后面用于实现瀑布流分页
   tagName?: string; // 标签，非必填
   type: 1 | 2 | 3 | 4; // 1 - 最新； 2 - 最热； 3 - 点赞最多； 4 - 推荐【近 3/7/N 天播放最多】
 };

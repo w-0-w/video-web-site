@@ -5,21 +5,24 @@ const VideoDomId = 'j-xgplayer-dom-id';
 
 export default function Player({
   //
-  slug,
+  url,
 }: {
-  slug: string;
+  url: string;
 }) {
   useEffect(() => {
     // const dp =
-    new DPlayer({
-      container: document.getElementById(VideoDomId),
-      video: {
-        url: 'http://s2.pstatp.com/cdn/expire-1-M/byted-player-videos/1.0.0/xgplayer-demo.mp4',
-      },
-      theme: '#f00',
-      logo: '/favicon.png',
-    });
-  }, []);
+    if (url) {
+      new DPlayer({
+        container: document.getElementById(VideoDomId),
+        video: {
+          url,
+          // url: 'http://s2.pstatp.com/cdn/expire-1-M/byted-player-videos/1.0.0/xgplayer-demo.mp4',
+        },
+        theme: '#f00',
+        logo: '/icon.png',
+      });
+    }
+  }, [url]);
   return (
     <div
       style={{

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ResponsiveGrid, Pagination } from '@alifd/next';
 
-import { queryVideoListLatest } from '@/api';
+import { queryVideoList } from '@/api';
+import { PAGE_SIZE } from '@/config/video';
 import { queryColumnSpans } from '@/utils';
 
 import CellDiv from '../CellDiv';
@@ -16,18 +17,23 @@ export default function BlockList({ scene }: { scene: T_Scene }) {
 
   const [pageLoading, setPageLoading] = useState(false);
   const [current, setCurrent] = useState(1);
+  const [totalRecord, setTotalRecord] = useState(0);
   const [blockList, setBlockList] = useState<TTypeBlockList>([]);
 
   const fetchData = async () => {
     try {
       // @ts-ignore
-      const { code, data } = await queryVideoListLatest({
-        pageSize: 20,
+      const { code, data } = await queryVideoList({
+        pageSize: PAGE_SIZE,
         pageNo: 1,
         lastVideoId: 0,
+        type: sceneItem.type,
       });
       if (code === 'SUCCESS') {
-        setBlockList(data?.pageData);
+        const { totalCount, pageData } = data || {};
+
+        setTotalRecord(totalCount);
+        setBlockList(pageData);
       }
     } catch (_e) {
       //
@@ -94,7 +100,8 @@ export default function BlockList({ scene }: { scene: T_Scene }) {
         <Pagination
           //
           shape="arrow-only"
-          total={21}
+          total={totalRecord}
+          pageSize={PAGE_SIZE}
           current={current}
           onChange={onChangeEvt}
         />

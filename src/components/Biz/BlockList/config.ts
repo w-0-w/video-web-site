@@ -1,12 +1,15 @@
 export const SceneMap = {
   home: {
-    title: '推荐',
+    title: '最热',
+    type: 2,
   },
   'tag-item': {
     title: 'tag',
+    type: 1,
   },
   detail: {
-    title: '相关推荐',
+    title: '推荐',
+    type: 4,
   },
 } as const;
 

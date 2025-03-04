@@ -1,43 +1,19 @@
 export default {
   'GET /api/videoWeb/tag/list': {
     code: 'SUCCESS',
-    msg: 'OK',
+    msg: '操作成功',
     data: [
       {
-        tagName: '推荐',
         tagId: 1,
+        tagName: '国产',
       },
       {
-        tagName: '热门',
-        tagId: 2,
+        tagId: 1,
+        tagName: '自拍',
       },
       {
-        tagName: '最新',
-        tagId: 3,
-      },
-      {
-        tagName: '推荐',
-        tagId: 4,
-      },
-      {
-        tagName: '热门',
-        tagId: 5,
-      },
-      {
-        tagName: '最新',
-        tagId: 6,
-      },
-      {
-        tagName: '推荐',
-        tagId: 7,
-      },
-      {
-        tagName: '热门',
-        tagId: 8,
-      },
-      {
-        tagName: '最新',
-        tagId: 9,
+        tagId: 1,
+        tagName: '偷拍',
       },
     ],
   },

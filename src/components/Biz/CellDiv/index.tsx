@@ -1,12 +1,14 @@
 import { useNavigate } from 'ice';
 
+import { getRelativeTime } from '@/utils';
+
 export default function CellDiv({
   //
   detail,
 }: {
   detail: TTypeBlockListItem;
 }) {
-  const { name, coverImageUrl } = detail;
+  const { id, name, coverImageUrl, createAt } = detail;
   const navigate = useNavigate();
 
   return (
@@ -24,7 +26,7 @@ export default function CellDiv({
         cursor: 'pointer',
       }}
       onClick={() => {
-        navigate(`/detail?slug=${Math.floor(Math.random() * 1000)}`);
+        navigate(`/detail?slug=${encodeURIComponent(id)}`);
       }}
     >
       <div
@@ -59,7 +61,7 @@ export default function CellDiv({
           fontWeight: 'bold',
         }}
       >
-        {name}
+        {name} - {getRelativeTime(createAt)}
       </div>
     </div>
   );
