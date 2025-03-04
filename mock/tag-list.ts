@@ -1,5 +1,5 @@
 export default {
-  'GET /videoWeb/tag/list': {
+  'GET /api/videoWeb/tag/list': {
     code: 'SUCCESS',
     msg: 'OK',
     data: [

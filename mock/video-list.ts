@@ -1,7 +1,7 @@
 import type { Request, Response } from '@ice/app';
 
 export default {
-  'POST /videoWeb/video/page/list': (request: Request, response: Response) => {
+  'POST /api/videoWeb/video/page/list': (request: Request, response: Response) => {
     // const { id } = request.params;
     const randomNum = Math.floor(Math.random() * 1000);
     const data: any = [];

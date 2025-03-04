@@ -2,15 +2,16 @@ import axios from 'axios';
 
 // 创建axios实例
 export const apiClient = axios.create({
-  // baseURL: 'https://api.example.com', // 你的基础URL
-  timeout: 10000, // 请求超时时间
+  baseURL: 'http://5ma.org',
+  timeout: 10000,
+  headers: { APP_ID: 'oqzrb688GfoQ94peiB4OMw==' },
 });
 
 // 添加请求拦截器
 apiClient.interceptors.request.use(
   (config) => {
-    // 在发送请求之前做些什么，例如设置token
-    config.headers.APP_ID = 'oqzrb688GfoQ94peiB4OMw==';
+    // // 在发送请求之前做些什么，例如设置token
+    // config.headers.
     return config;
   },
   (error) => {

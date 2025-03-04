@@ -1,9 +1,9 @@
 import { apiClient } from '@/utils';
 
-export const queryTagList = () => apiClient.get('/videoWeb/tag/list');
+export const queryTagList = () => apiClient.get('/api/videoWeb/tag/list');
 
 const queryVideoList = (data: TTypeQueryVideoListParams) =>
-  apiClient.post('/videoWeb/video/page/list', data);
+  apiClient.post('/api/videoWeb/video/page/list', data);
 
 export const queryVideoListLatest = (
   basicParams: TTypeQueryVideoListBasicParams,
