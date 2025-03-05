@@ -26,10 +26,12 @@ export default function CellDiv({
   const [latestLikeCount, setLatestLikeCount] = useState(likeCount);
 
   const doLikeVideo = async () => {
-    const { code } = await videoActionLike(id);
+    if (latestLikeCount === likeCount) {
+      const { code } = await videoActionLike(id);
 
-    if (code === 'SUCCESS') {
-      setLatestLikeCount(latestLikeCount + 1);
+      if (code === 'SUCCESS') {
+        setLatestLikeCount(latestLikeCount + 1);
+      }
     }
   };
 
@@ -71,7 +73,7 @@ export default function CellDiv({
           overflow: 'hidden',
         }}
       >
-        {/* <img
+        <img
           src={coverImageUrl}
           style={{
             position: 'absolute',
@@ -81,7 +83,7 @@ export default function CellDiv({
             height: '100%',
             objectFit: 'cover',
           }}
-        /> */}
+        />
       </div>
       <div
         style={{

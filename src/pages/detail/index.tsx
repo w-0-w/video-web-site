@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { definePageConfig, useSearchParams } from 'ice';
 
-import { queryVideoDetail } from '@/api';
+import { queryVideoDetail, videoActionView } from '@/api';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import Player from '@/components/Biz/Player';
 import BlockList from '@/components/Biz/BlockList';
 import TagList from '@/components/Biz/TagList';
 
 export default function Detail() {
+  const idRef = useRef('');
   const [searchParams] = useSearchParams();
 
   const [videoUrl, setVideoUrl] = useState('');
@@ -18,9 +19,11 @@ export default function Detail() {
         decodeURIComponent(searchParams.get('slug') || ''),
       );
       if (code === 'SUCCESS') {
-        const { url } = data || {};
+        const { id, url } = data || {};
 
+        idRef.current = id;
         setVideoUrl(url);
+        videoActionView(id);
       }
     } catch (_e) {
       //
@@ -38,7 +41,7 @@ export default function Detail() {
   return (
     <>
       <AdsBanner />
-      {videoUrl ? <Player url={videoUrl} /> : null}
+      {videoUrl ? <Player id={idRef.current} url={videoUrl} /> : null}
       <BlockList scene="detail" />
       <TagList />
     </>

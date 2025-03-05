@@ -1,18 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import DPlayer from 'dplayer';
+
+import { videoActionPlay } from '@/api';
 
 const VideoDomId = 'j-xgplayer-dom-id';
 
 export default function Player({
   //
+  id,
   url,
 }: {
+  id: string;
   url: string;
 }) {
+  const dPlayerIns = useRef<null | DPlayer>(null);
+
+  const bindSomeEvents = () => {
+    if (dPlayerIns.current) {
+      dPlayerIns.current.on('play' as any, () => {
+        videoActionPlay(id);
+      });
+    }
+  };
+
   useEffect(() => {
-    // const dp =
     if (url) {
-      new DPlayer({
+      dPlayerIns.current = new DPlayer({
         container: document.getElementById(VideoDomId),
         video: {
           url,
@@ -21,6 +34,8 @@ export default function Player({
         theme: '#f00',
         logo: '/icon.png',
       });
+
+      bindSomeEvents();
     }
   }, [url]);
   return (
