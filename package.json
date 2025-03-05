@@ -1,7 +1,7 @@
 {
-  "name": "@ice/fusion-pro-scaffold",
-  "version": "1.3.0",
-  "description": "ice.js 3 Pro 模板（基于 Fusion Design）",
+  "name": "video-web-site",
+  "version": "0.1.0",
+  "description": "A website.",
   "scripts": {
     "start": "ice start --speedup --no-mock",
     "dev-mock": "ice start --speedup",
