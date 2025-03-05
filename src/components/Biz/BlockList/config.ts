@@ -13,6 +13,6 @@ export const SceneMap = {
   },
 } as const;
 
-export type T_Scene = keyof typeof SceneMap;
+export type TScene = keyof typeof SceneMap;
 
 export default {};

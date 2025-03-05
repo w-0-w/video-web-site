@@ -3,29 +3,39 @@ import { ResponsiveGrid, Pagination } from '@alifd/next';
 
 import { queryVideoList } from '@/api';
 import { PAGE_SIZE } from '@/config/video';
-import { queryColumnSpans } from '@/utils';
+import {
+  //
+  queryColumnSpans,
+  // sleep,
+} from '@/utils';
+import { Loading } from '@/components/Biz/Loading';
 
 import CellDiv from '../CellDiv';
 
-import { T_Scene, SceneMap } from './config';
+import { TScene, SceneMap } from './config';
 
 const { Cell } = ResponsiveGrid;
 
-export default function BlockList({ scene }: { scene: T_Scene }) {
+export default function BlockList({ scene }: { scene: TScene }) {
   const columnSpans = queryColumnSpans();
   const sceneItem = SceneMap[scene];
 
-  const [pageLoading, setPageLoading] = useState(false);
+  const [pageTurning, setPageTurning] = useState(false);
   const [current, setCurrent] = useState(1);
   const [totalRecord, setTotalRecord] = useState(0);
+  const [listUpdating, setListUpdating] = useState(false);
   const [blockList, setBlockList] = useState<TTypeBlockList>([]);
 
   const fetchData = async () => {
     try {
-      // @ts-ignore
+      setListUpdating(true);
+      setPageTurning(true);
+
+      // await sleep(2000);
+
       const { code, data } = await queryVideoList({
         pageSize: PAGE_SIZE,
-        pageNo: 1,
+        pageNo: current,
         lastVideoId: 0,
         type: sceneItem.type,
       });
@@ -37,21 +47,19 @@ export default function BlockList({ scene }: { scene: T_Scene }) {
       }
     } catch (_e) {
       //
+    } finally {
+      setListUpdating(false);
+      setPageTurning(false);
     }
   };
 
   const onChangeEvt = (targetPageIndex) => {
-    console.log('xxxx: ', targetPageIndex);
-    setPageLoading(true);
-    setTimeout(() => {
-      setCurrent(targetPageIndex);
-      setPageLoading(false);
-    }, 1000);
+    setCurrent(targetPageIndex);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [current]);
 
   return (
     <div
@@ -69,15 +77,31 @@ export default function BlockList({ scene }: { scene: T_Scene }) {
       >
         {sceneItem.title}
       </div>
-      <ResponsiveGrid device="desktop" columns={12} gap={10}>
-        {(blockList || []).map((item) => {
-          return (
-            <Cell colSpan={columnSpans}>
-              <CellDiv detail={item} />
-            </Cell>
-          );
-        })}
-      </ResponsiveGrid>
+      <div
+        style={{
+          position: 'relative',
+          minHeight: '400px',
+        }}
+      >
+        {listUpdating ? (
+          <Loading
+            style={{
+              position: 'absolute',
+              inset: '0',
+              zIndex: '1',
+            }}
+          />
+        ) : null}
+        <ResponsiveGrid device="desktop" columns={12} gap={10}>
+          {(blockList || []).map((item) => {
+            return (
+              <Cell colSpan={columnSpans}>
+                <CellDiv detail={item} />
+              </Cell>
+            );
+          })}
+        </ResponsiveGrid>
+      </div>
       <div
         //
         style={{
@@ -89,7 +113,7 @@ export default function BlockList({ scene }: { scene: T_Scene }) {
       >
         <div
           style={{
-            display: pageLoading ? 'block' : 'none',
+            display: pageTurning ? 'block' : 'none',
             position: 'absolute',
             inset: '0',
             // background: 'rgba(255,255,255,.3)',

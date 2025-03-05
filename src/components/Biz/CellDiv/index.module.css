@@ -1,0 +1,13 @@
+.videoCardHover {
+  transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: 2px 2px 6px #333;
+  }
+}
+
+.likeHover {
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 1 !important;
+  }
+}

@@ -1,7 +1,13 @@
 /// <reference types="@ice/app/types" />
 
+interface IFApiResponse {
+  code: string;
+  data: any;
+  msg: string;
+}
+
 type TTypeBlockListItem = {
-  id: number; // 视频ID
+  id: string; // 视频ID
   name: string; // 视频名称
   tags: string[]; // 视频标签 TODO
   url: string; // 视频URL

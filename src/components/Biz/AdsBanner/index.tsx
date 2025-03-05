@@ -10,10 +10,18 @@ export default function AdsBanner() {
         margin: '0 auto',
       }}
     >
-      {ads.map(({ href, img }) => {
+      {ads.map(({ href, img, ratio }) => {
         return (
           <a
+            key={href}
             href={href}
+            style={{
+              display: 'block',
+              marginBottom: '4px',
+              width: '100%',
+              aspectRatio: ratio,
+              backgroundColor: '#333',
+            }}
             rel="nofollow"
             target="_blank"
           >
@@ -21,6 +29,7 @@ export default function AdsBanner() {
               src={img}
               style={{
                 width: '100%',
+                height: '100%',
               }}
             />
           </a>

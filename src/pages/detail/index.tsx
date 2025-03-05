@@ -14,7 +14,6 @@ export default function Detail() {
 
   const fetchData = async () => {
     try {
-      // @ts-ignore
       const { code, data } = await queryVideoDetail(
         decodeURIComponent(searchParams.get('slug') || ''),
       );
