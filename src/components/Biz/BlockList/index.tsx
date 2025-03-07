@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ResponsiveGrid, Pagination } from '@alifd/next';
 
 import { queryVideoList } from '@/api';
-import { PAGE_SIZE } from '@/config/video';
+import { MAX_WIDTH, PAGE_SIZE } from '@/config/video';
 import {
   //
   queryColumnSpans,
@@ -64,7 +64,7 @@ export default function BlockList({ scene }: { scene: TScene }) {
   return (
     <div
       style={{
-        maxWidth: '1250px',
+        maxWidth: `${MAX_WIDTH}px`,
         margin: '0 auto',
       }}
     >
@@ -123,6 +123,7 @@ export default function BlockList({ scene }: { scene: TScene }) {
         />
         <Pagination
           //
+          showJump={false}
           shape="arrow-only"
           total={totalRecord}
           pageSize={PAGE_SIZE}

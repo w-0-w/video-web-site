@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { definePageConfig, useSearchParams } from 'ice';
 
+import { PAGE_TITLE } from '@/config/video';
 import { queryVideoDetail, videoActionView } from '@/api';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import Player from '@/components/Biz/Player';
@@ -11,7 +12,7 @@ export default function Detail() {
   const idRef = useRef('');
   const [searchParams] = useSearchParams();
 
-  const [videoUrl, setVideoUrl] = useState('');
+  const [videoInfo, setVideoInfo] = useState<null | TTypeBlockListItem>(null);
 
   const fetchData = async () => {
     try {
@@ -19,10 +20,13 @@ export default function Detail() {
         decodeURIComponent(searchParams.get('slug') || ''),
       );
       if (code === 'SUCCESS') {
-        const { id, url } = data || {};
+        const { id, name } = data || {};
 
+        if (name) {
+          document.title = name;
+        }
         idRef.current = id;
-        setVideoUrl(url);
+        setVideoInfo(data);
         videoActionView(id);
       }
     } catch (_e) {
@@ -41,7 +45,7 @@ export default function Detail() {
   return (
     <>
       <AdsBanner />
-      {videoUrl ? <Player id={idRef.current} url={videoUrl} /> : null}
+      {videoInfo ? <Player videoInfo={videoInfo} /> : null}
       <BlockList scene="detail" />
       <TagList />
     </>
@@ -50,6 +54,6 @@ export default function Detail() {
 
 export const pageConfig = definePageConfig(() => {
   return {
-    title: 'Video',
+    title: PAGE_TITLE,
   };
 });

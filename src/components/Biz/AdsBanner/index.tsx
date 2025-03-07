@@ -1,3 +1,5 @@
+import { AD_MAX_WIDTH } from '@/config/video';
+
 import { ads } from './config';
 
 export default function AdsBanner() {
@@ -6,7 +8,7 @@ export default function AdsBanner() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        maxWidth: '1250px',
+        maxWidth: `${AD_MAX_WIDTH}px`,
         margin: '0 auto',
       }}
     >

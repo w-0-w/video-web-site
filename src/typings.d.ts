@@ -16,6 +16,7 @@ type TTypeBlockListItem = {
   likeCount: number; // 点赞数
   playCount: number; // 播放数
   createAt: number; // 上传时间，时间戳 ms
+  duration: number; // 视频时长，单位 秒
 };
 
 type TTypeBlockList = TTypeBlockListItem[];

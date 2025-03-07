@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { useNavigate } from 'ice';
+// import { useNavigate } from 'ice';
 
 import { videoActionLike } from '@/api';
-import { getRelativeTime } from '@/utils';
+import { getRelativeTime, getHMSFromSeconds } from '@/utils';
 
 import {
   //
-  CardRatioWidth,
-  CardRatioHeight,
+  CardVideoRatioWidth,
+  CardVideoRatioHeight,
   CardTextSingleHeight,
+  CardTextSingleLineHeight,
   CardTextInfoHeight,
 } from './config';
 
@@ -20,8 +21,9 @@ export default function CellDiv({
 }: {
   detail: TTypeBlockListItem;
 }) {
-  const { id, name, coverImageUrl, createAt, likeCount, playCount } = detail;
-  const navigate = useNavigate();
+  const { id, name, coverImageUrl, duration, createAt, likeCount, playCount } =
+    detail;
+  // const navigate = useNavigate();
 
   const [latestLikeCount, setLatestLikeCount] = useState(likeCount);
 
@@ -51,14 +53,15 @@ export default function CellDiv({
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         width: '100%',
+        height: 'auto',
         // height: '180px',
-        aspectRatio: `${CardRatioWidth} / ${CardRatioHeight}`, // 直接设置宽高比
         backgroundColor: '#000',
         borderRadius: '4px',
         overflow: 'hidden',
       }}
       onClick={() => {
-        navigate(`/detail?slug=${encodeURIComponent(id)}`);
+        // navigate(`/detail?slug=${encodeURIComponent(id)}`);
+        window.location.href = `/detail?slug=${encodeURIComponent(id)}`;
       }}
     >
       <div
@@ -66,7 +69,7 @@ export default function CellDiv({
           position: 'relative',
           display: 'flex',
           width: '100%',
-          height: `calc(100% - ${CardTextInfoHeight}px)`,
+          aspectRatio: `${CardVideoRatioWidth} / ${CardVideoRatioHeight}`, // 16:9
           backgroundColor: '#333',
           // borderRadius: '4px',
           cursor: 'pointer',
@@ -95,11 +98,14 @@ export default function CellDiv({
         }}
       >
         <div
-          className="t-over-1"
+          className="t-over-2"
           style={{
             fontSize: '14px',
-            height: `${CardTextSingleHeight}px`,
-            lineHeight: `${CardTextSingleHeight + 8}px`,
+            height: `${CardTextSingleHeight + CardTextSingleLineHeight}px`,
+            paddingTop: `${
+              (CardTextSingleHeight - CardTextSingleLineHeight) * 2
+            }px`,
+            lineHeight: `${CardTextSingleLineHeight}px`,
             fontWeight: 'bold',
             cursor: 'pointer',
           }}
@@ -108,12 +114,41 @@ export default function CellDiv({
         </div>
         <div
           style={{
-            fontSize: '12px',
-            lineHeight: `${CardTextSingleHeight - 4}px`,
-            opacity: '.7',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            height: `${CardTextSingleHeight}px`,
           }}
         >
-          {getRelativeTime(createAt)}
+          <div
+            style={{
+              fontSize: '12px',
+              lineHeight: `${CardTextSingleHeight - 4}px`,
+              opacity: '.7',
+            }}
+          >
+            {getHMSFromSeconds(duration)}
+          </div>
+          <div
+            style={{
+              fontSize: '12px',
+              lineHeight: `${CardTextSingleHeight - 4}px`,
+              opacity: '.7',
+            }}
+          >
+            {getRelativeTime(createAt)}
+          </div>
+          {/* <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              opacity: '.6',
+            }}
+          >
+            <i className="iconfont icon-vws-view" />
+            <span>{playCount}</span>
+          </div> */}
         </div>
         <div
           style={{
@@ -134,6 +169,15 @@ export default function CellDiv({
             <i className="iconfont icon-vws-view" />
             <span>{playCount}</span>
           </div>
+          {/* <div
+            style={{
+              fontSize: '12px',
+              lineHeight: `${CardTextSingleHeight - 4}px`,
+              opacity: '.7',
+            }}
+          >
+            {getRelativeTime(createAt)}
+          </div> */}
           <div
             className={styles.likeHover}
             style={{

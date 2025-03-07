@@ -1,4 +1,6 @@
-export const CardRatioWidth = 1.2;
-export const CardRatioHeight = 1;
+export const CardVideoRatioWidth = 16;
+export const CardVideoRatioHeight = 9;
+
 export const CardTextSingleHeight = 26;
-export const CardTextInfoHeight = CardTextSingleHeight * 3;
+export const CardTextSingleLineHeight = 22;
+export const CardTextInfoHeight = CardTextSingleHeight * 4;

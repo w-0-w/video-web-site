@@ -6,8 +6,8 @@ import styles from './index.module.css';
 const LeftLogoStyles: CSSProperties = {
   position: 'relative',
   display: 'inline-block',
-  fontSize: '48px',
-  lineHeight: '48px',
+  fontSize: '36px',
+  lineHeight: '36px',
   // fontWeight: 'bold',
   color: '#fff',
 };

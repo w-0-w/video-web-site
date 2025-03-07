@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { definePageConfig, useSearchParams } from 'ice';
 
+import { PAGE_TITLE } from '@/config/video';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import BlockList from '@/components/Biz/BlockList';
 
@@ -21,6 +22,6 @@ export default function Tag() {
 
 export const pageConfig = definePageConfig(() => {
   return {
-    title: 'Tag',
+    title: PAGE_TITLE,
   };
 });

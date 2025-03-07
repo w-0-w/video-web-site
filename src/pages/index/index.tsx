@@ -1,5 +1,6 @@
 import { definePageConfig } from 'ice';
 
+import { PAGE_TITLE } from '@/config/video';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import BlockList from '@/components/Biz/BlockList';
 import TagList from '@/components/Biz/TagList';
@@ -8,8 +9,8 @@ export default function Index() {
   return (
     <>
       <AdsBanner />
-      <BlockList scene="home" />
       <TagList />
+      <BlockList scene="home" />
     </>
   );
 }
@@ -17,6 +18,6 @@ export default function Index() {
 export const pageConfig = definePageConfig(() => {
   return {
     auth: ['admin', 'user'],
-    title: 'Home',
+    title: PAGE_TITLE,
   };
 });
