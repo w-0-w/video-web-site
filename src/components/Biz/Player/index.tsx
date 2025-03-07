@@ -76,14 +76,54 @@ export default function Player({
           <div
             style={{
               position: 'absolute',
-              width: '50%',
-              height: '50%',
-              top: '25%',
-              left: '25%',
-              backgroundColor: 'tomato',
+              width: '100%',
+              height: '100%',
+              top: '0',
+              left: '0',
+              backgroundColor: 'transparent',
               zIndex: '1',
             }}
-          />
+          >
+            <div
+              style={{
+                position: 'absolute',
+                width: '50%',
+                height: '50%',
+                top: '25%',
+                left: '25%',
+                backgroundColor: 'tomato',
+                userSelect: 'none',
+                cursor: 'wait',
+              }}
+              onClick={(evt) => {
+                evt.stopPropagation();
+                alert('Ad alert!');
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  width: '32px',
+                  height: '32px',
+                  top: '0',
+                  right: '0',
+                  // backgroundColor: 'rgba(0, 0, 0, .3)',
+                  textAlign: 'center',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  lineHeight: '32px',
+                  userSelect: 'none',
+                  cursor: 'pointer',
+                }}
+                onClick={(evt) => {
+                  evt.stopPropagation();
+                  setVideoAdOpened(false);
+                }}
+              >
+                X
+              </div>
+            </div>
+          </div>
         ) : null}
         <div
           id={VideoDomId}
