@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-vws-close:before {
+  content: "\e63c";
+}
+
 .icon-vws-good-fill:before {
   content: "\e83b";
 }
@@ -24,4 +28,3 @@
 .icon-vws-view:before {
   content: "\e847";
 }
-

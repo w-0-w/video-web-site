@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "A website.",
   "scripts": {
-    "start": "ice start --speedup --no-mock",
-    "dev-mock": "ice start --speedup",
+    "start": "ice start --speedup",
+    "dev-no-mock": "ice start --speedup --no-mock",
     "build": "ice build",
     "deploy": "git pull && npm i && npm run build",
     "eslint": "eslint ./src --cache --ext .js,.jsx,.ts,.tsx",

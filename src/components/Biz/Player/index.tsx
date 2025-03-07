@@ -120,7 +120,12 @@ export default function Player({
                   setVideoAdOpened(false);
                 }}
               >
-                X
+                <i
+                  className="iconfont icon-vws-close"
+                  style={{
+                    fontSize: '24px',
+                  }}
+                />
               </div>
             </div>
           </div>
