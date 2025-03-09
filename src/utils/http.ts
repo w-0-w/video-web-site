@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+import { IS_PROD } from '@/config/video';
+
 // 创建axios实例
 export const apiClient = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? 'http://5ma.org' : '',
+  baseURL: IS_PROD ? 'http://5ma.org' : '',
   timeout: 10000,
   headers: { APP_ID: 'oqzrb688GfoQ94peiB4OMw==' },
 });

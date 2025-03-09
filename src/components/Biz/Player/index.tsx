@@ -3,6 +3,7 @@ import DPlayer from 'dplayer';
 
 import { MAX_WIDTH } from '@/config/video';
 import { videoActionPlay } from '@/api';
+import DetailInfo from '@/components/Biz/DetailInfo';
 
 const VideoDomId = 'j-xgplayer-dom-id';
 
@@ -55,6 +56,7 @@ export default function Player({
         margin: '0 auto',
       }}
     >
+      {/* name */}
       <div
         style={{
           margin: '22px 0 16px',
@@ -72,6 +74,7 @@ export default function Player({
           aspectRatio: '16 / 9',
         }}
       >
+        {/* pause ad */}
         {videoAdOpened ? (
           <div
             style={{
@@ -130,6 +133,7 @@ export default function Player({
             </div>
           </div>
         ) : null}
+        {/* player */}
         <div
           id={VideoDomId}
           style={{
@@ -138,6 +142,8 @@ export default function Player({
           }}
         />
       </div>
+      {/* detail */}
+      <DetailInfo detail={videoInfo} />
     </div>
   );
 }

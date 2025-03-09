@@ -1,7 +1,6 @@
-import { useState } from 'react';
-// import { useNavigate } from 'ice';
+import { useNavigate } from 'ice';
 
-import { videoActionLike } from '@/api';
+import { Like } from '@/components/Biz/Units';
 import { getRelativeTime, getHMSFromSeconds } from '@/utils';
 
 import {
@@ -21,27 +20,19 @@ export default function CellDiv({
 }: {
   detail: TTypeBlockListItem;
 }) {
-  const { id, name, coverImageUrl, duration, createAt, likeCount, playCount } =
-    detail;
-  // const navigate = useNavigate();
+  const {
+    //
+    id,
+    name,
+    coverImageUrl,
+    duration,
+    createAt,
+    // likeCount,
+    // playCount,
+    viewCount,
+  } = detail;
 
-  const [latestLikeCount, setLatestLikeCount] = useState(likeCount);
-
-  const doLikeVideo = async () => {
-    if (latestLikeCount === likeCount) {
-      const { code } = await videoActionLike(id);
-
-      if (code === 'SUCCESS') {
-        setLatestLikeCount(latestLikeCount + 1);
-      }
-    }
-  };
-
-  const likeVideoEvt = (e) => {
-    e.stopPropagation();
-
-    doLikeVideo();
-  };
+  const navigate = useNavigate();
 
   return (
     <div
@@ -60,10 +51,10 @@ export default function CellDiv({
         overflow: 'hidden',
       }}
       onClick={() => {
-        // navigate(`/detail?slug=${encodeURIComponent(id)}`);
-        window.location.href = `/detail?slug=${encodeURIComponent(id)}`;
+        navigate(`/detail/${encodeURIComponent(id)}`);
       }}
     >
+      {/* cover */}
       <div
         style={{
           position: 'relative',
@@ -88,6 +79,7 @@ export default function CellDiv({
           }}
         />
       </div>
+      {/* infos */}
       <div
         style={{
           width: '100%',
@@ -97,6 +89,7 @@ export default function CellDiv({
           // backgroundColor: 'tomato',
         }}
       >
+        {/* name */}
         <div
           className="t-over-2"
           style={{
@@ -112,6 +105,7 @@ export default function CellDiv({
         >
           {name}
         </div>
+        {/* duration + date */}
         <div
           style={{
             display: 'flex',
@@ -138,18 +132,8 @@ export default function CellDiv({
           >
             {getRelativeTime(createAt)}
           </div>
-          {/* <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              opacity: '.6',
-            }}
-          >
-            <i className="iconfont icon-vws-view" />
-            <span>{playCount}</span>
-          </div> */}
         </div>
+        {/* viewCount + Like */}
         <div
           style={{
             display: 'flex',
@@ -167,32 +151,9 @@ export default function CellDiv({
             }}
           >
             <i className="iconfont icon-vws-view" />
-            <span>{playCount}</span>
+            <span>{viewCount}</span>
           </div>
-          {/* <div
-            style={{
-              fontSize: '12px',
-              lineHeight: `${CardTextSingleHeight - 4}px`,
-              opacity: '.7',
-            }}
-          >
-            {getRelativeTime(createAt)}
-          </div> */}
-          <div
-            className={styles.likeHover}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              color: '#209bfa',
-              opacity: '.7',
-              cursor: 'pointer',
-            }}
-            onClick={likeVideoEvt}
-          >
-            <i className="iconfont icon-vws-good" />
-            <span>{latestLikeCount}</span>
-          </div>
+          <Like scene="card" detail={detail} />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { definePageConfig, useSearchParams } from 'ice';
+import { definePageConfig, useParams } from 'ice';
 
 import { PAGE_TITLE } from '@/config/video';
 import { queryVideoDetail, videoActionView } from '@/api';
@@ -10,15 +10,13 @@ import TagList from '@/components/Biz/TagList';
 
 export default function Detail() {
   const idRef = useRef('');
-  const [searchParams] = useSearchParams();
+  const params = useParams();
 
   const [videoInfo, setVideoInfo] = useState<null | TTypeBlockListItem>(null);
 
-  const fetchData = async () => {
+  const fetchData = async (pId: string) => {
     try {
-      const { code, data } = await queryVideoDetail(
-        decodeURIComponent(searchParams.get('slug') || ''),
-      );
+      const { code, data } = await queryVideoDetail(decodeURIComponent(pId));
       if (code === 'SUCCESS') {
         const { id, name } = data || {};
 
@@ -35,12 +33,11 @@ export default function Detail() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (params.id) {
+      fetchData(params.id);
+      window.scrollTo(0, 0);
+    }
+  }, [params.id]);
 
   return (
     <>

@@ -15,6 +15,7 @@ type TTypeBlockListItem = {
   coverImageUrl: string; // 视频封面URL
   likeCount: number; // 点赞数
   playCount: number; // 播放数
+  viewCount: number; // 浏览数
   createAt: number; // 上传时间，时间戳 ms
   duration: number; // 视频时长，单位 秒
 };

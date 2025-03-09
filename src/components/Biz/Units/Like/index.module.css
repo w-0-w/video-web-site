@@ -1,0 +1,44 @@
+.likeCommon {
+  display: flex;
+  gap: 4px;
+  color: #209bfa;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1 !important;
+  }
+}
+
+/* - card --------------------------- */
+.cardLike {
+  composes: likeCommon;
+  height: 20px;
+}
+
+.cardLikeIcon {
+  /*  */
+}
+
+.cardLikeCount {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* - detail ------------------------- */
+.detailLike {
+  composes: likeCommon;
+  align-items: baseline;
+  height: 30px;
+  margin-bottom: 12px;
+}
+
+.detailLikeIcon {
+  font-size: 30px !important;
+}
+
+.detailLikeCount {
+  font-size: 24px;
+  line-height: 24px;
+}
