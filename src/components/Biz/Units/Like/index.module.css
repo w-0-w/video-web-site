@@ -29,16 +29,15 @@
 /* - detail ------------------------- */
 .detailLike {
   composes: likeCommon;
-  align-items: baseline;
-  height: 30px;
-  margin-bottom: 12px;
+  align-items: center;
+  height: 20px;
 }
 
 .detailLikeIcon {
-  font-size: 30px !important;
+  font-size: 16px !important;
 }
 
 .detailLikeCount {
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
 }

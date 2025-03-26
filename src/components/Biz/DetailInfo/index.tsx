@@ -50,10 +50,10 @@ export default function DetailInfo({
     <div
       style={{
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         gap: '0',
         alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         width: '100%',
         height: 'auto',
         padding: '12px 0 24px',
@@ -63,15 +63,7 @@ export default function DetailInfo({
         overflow: 'hidden',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: '24px',
-        }}
-      >
-        <Like scene="detail" detail={detail} />
-      </div>
+      {/* 信息 */}
       <div
         style={{
           display: 'flex',
@@ -93,6 +85,16 @@ export default function DetailInfo({
             </div>
           );
         })}
+      </div>
+      {/* 点赞 */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '24px',
+        }}
+      >
+        <Like scene="detail" detail={detail} />
       </div>
     </div>
   );

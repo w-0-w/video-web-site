@@ -16,7 +16,16 @@ import { TScene, SceneMap } from './config';
 
 const { Cell } = ResponsiveGrid;
 
-export default function BlockList({ scene }: { scene: TScene }) {
+export default function BlockList({
+  //
+  scene,
+  tagTitle,
+  // tagId,
+}: {
+  scene: TScene;
+  tagTitle?: string;
+  tagId?: string;
+}) {
   const columnSpans = queryColumnSpans();
   const sceneItem = SceneMap[scene];
 
@@ -70,12 +79,12 @@ export default function BlockList({ scene }: { scene: TScene }) {
     >
       <div
         style={{
-          fontSize: '24px',
+          fontSize: '1.5rem',
           fontWeight: 'bold',
           margin: '20px 0 6px',
         }}
       >
-        {sceneItem.title}
+        {tagTitle || sceneItem.title}
       </div>
       <div
         style={{

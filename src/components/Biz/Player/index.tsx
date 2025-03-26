@@ -60,7 +60,7 @@ export default function Player({
       <div
         style={{
           margin: '22px 0 16px',
-          fontSize: '24px',
+          fontSize: '1.5rem',
           fontWeight: 'bold',
         }}
       >

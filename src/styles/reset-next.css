@@ -1,4 +1,22 @@
+html {
+  font-size: 16px; /* 默认字体大小 */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* 小于或等于768px时，调整根元素字体大小 */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px; /* 小于或等于480px时，进一步调整根元素字体大小 */
+  }
+}
+
 body {
+  /* 默认字体大小 */
+  font-size: 1rem !important;
   font-family: CustomFont !important;
   color: #fff;
   -webkit-font-smoothing: antialiased;
