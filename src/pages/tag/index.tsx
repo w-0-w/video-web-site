@@ -15,11 +15,10 @@ export default function Tag() {
   return (
     <>
       <AdsBanner />
-      {/* TODO */}
       <BlockList
         scene="tag-item"
-        tagTitle={searchParams.get('tag') || ''}
-        tagId={searchParams.get('id') || '0'}
+        tag={searchParams.get('tag') || ''}
+        // tagId={searchParams.get('id') || '0'}
       />
     </>
   );

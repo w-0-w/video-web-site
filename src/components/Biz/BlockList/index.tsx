@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { ResponsiveGrid, Pagination } from '@alifd/next';
 
 import { queryVideoList } from '@/api';
-import { MAX_WIDTH, PAGE_SIZE } from '@/config/video';
+import { PAGE_SIZE } from '@/config/video';
+import NormalPageBlockWrapper from '@/components/NormalPageBlockWrapper';
 import {
   //
   queryColumnSpans,
@@ -10,7 +11,7 @@ import {
 } from '@/utils';
 import { Loading } from '@/components/Biz/Loading';
 
-import CellDiv from '../CellDiv';
+import CellDiv from './CellDiv';
 
 import { TScene, SceneMap } from './config';
 
@@ -19,12 +20,10 @@ const { Cell } = ResponsiveGrid;
 export default function BlockList({
   //
   scene,
-  tagTitle,
-  // tagId,
+  tag,
 }: {
   scene: TScene;
-  tagTitle?: string;
-  tagId?: string;
+  tag?: string;
 }) {
   const columnSpans = queryColumnSpans();
   const sceneItem = SceneMap[scene];
@@ -47,6 +46,7 @@ export default function BlockList({
         pageNo: current,
         lastVideoId: 0,
         type: sceneItem.type,
+        ...(tag ? { tag } : {}),
       });
       if (code === 'SUCCESS') {
         const { totalCount, pageData } = data || {};
@@ -71,25 +71,20 @@ export default function BlockList({
   }, [current]);
 
   return (
-    <div
-      style={{
-        maxWidth: `${MAX_WIDTH}px`,
-        margin: '0 auto',
-      }}
-    >
+    <NormalPageBlockWrapper>
       <div
         style={{
           fontSize: '1.5rem',
           fontWeight: 'bold',
-          margin: '20px 0 6px',
+          margin: '1.5rem 0 0.75rem',
         }}
       >
-        {tagTitle || sceneItem.title}
+        {tag ? `${tag} 标签相关的视频` : sceneItem.title}
       </div>
       <div
         style={{
           position: 'relative',
-          minHeight: '400px',
+          minHeight: '25rem',
         }}
       >
         {listUpdating ? (
@@ -117,7 +112,7 @@ export default function BlockList({
           position: 'relative',
           display: 'flex',
           justifyContent: 'center',
-          marginTop: '28px',
+          marginTop: '1.75rem',
         }}
       >
         <div
@@ -140,6 +135,6 @@ export default function BlockList({
           onChange={onChangeEvt}
         />
       </div>
-    </div>
+    </NormalPageBlockWrapper>
   );
 }

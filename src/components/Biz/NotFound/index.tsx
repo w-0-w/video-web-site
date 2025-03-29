@@ -1,10 +1,10 @@
-import { AD_MAX_WIDTH } from '@/config/video';
+import { MAX_WIDTH } from '@/config/video';
 
 export default function NotFound() {
   return (
     <div
       style={{
-        maxWidth: `${AD_MAX_WIDTH}px`,
+        maxWidth: `${MAX_WIDTH}px`,
         margin: '16px auto',
         padding: '84px 16px',
         backgroundColor: '#000',

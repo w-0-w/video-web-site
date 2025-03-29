@@ -1,6 +1,6 @@
 import { Link } from 'ice';
 
-import { MAX_WIDTH } from '@/config/video';
+import { MAX_WIDTH, PAGE_TITLE } from '@/config/video';
 
 import styles from './index.module.css';
 
@@ -19,18 +19,16 @@ export default function Footer() {
           margin: '0 auto',
         }}
       >
-        {/* 1. 5ma.com（点进官网主页）；
-      2.条款（新页面，纯文本，后补）；
-      3.官方群（官方飞机群，小苏发一下群地址）；
-      4.商务合作（新页面、放联系邮箱和飞机联系方式，小苏发一下内容） */}
         <div className={styles.entrances}>
-          <Link to="/">5ma.com</Link>
+          <Link to="/">{PAGE_TITLE}</Link>
           <Link to="/terms">条款</Link>
           <Link to="/group">官方群</Link>
           <Link to="/business">商务合作</Link>
         </div>
         <p className={styles.warning}>{WarningList.join('')}</p>
-        <p className={styles.copyright}>© 2025-2025 5ma 保留所有权利</p>
+        <p className={styles.copyright}>
+          © 2025-2025 {PAGE_TITLE} 保留所有权利
+        </p>
       </div>
     </div>
   );

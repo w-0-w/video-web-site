@@ -1,15 +1,13 @@
-import { AD_MAX_WIDTH } from '@/config/video';
+import NormalPageBlockWrapper from '@/components/NormalPageBlockWrapper';
 
 import { ads } from './config';
 
 export default function AdsBanner() {
   return (
-    <div
+    <NormalPageBlockWrapper
       style={{
         display: 'flex',
         flexDirection: 'column',
-        maxWidth: `${AD_MAX_WIDTH}px`,
-        margin: '0 auto',
       }}
     >
       {ads.map(({ href, img, ratio }) => {
@@ -37,10 +35,6 @@ export default function AdsBanner() {
           </a>
         );
       })}
-    </div>
+    </NormalPageBlockWrapper>
   );
 }
-
-// export default function AdsBanner() {
-//   return <></>;
-// }

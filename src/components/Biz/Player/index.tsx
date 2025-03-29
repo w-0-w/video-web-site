@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import DPlayer from 'dplayer';
 
-import { MAX_WIDTH } from '@/config/video';
 import { videoActionPlay } from '@/api';
-import DetailInfo from '@/components/Biz/DetailInfo';
+import NormalPageBlockWrapper from '@/components/NormalPageBlockWrapper';
+
+import DetailInfo from './DetailInfo';
 
 const VideoDomId = 'j-xgplayer-dom-id';
 
@@ -40,20 +41,18 @@ export default function Player({
           // pic: 'https://srv.carbonads.net/static/30242/4f7f59796c5dda8f5dfc63a40583dfde7cebb050',
         },
         theme: '#f00',
-        logo: '/icon.png',
-        contextmenu: [{ text: '关于 5ma', link: '' }],
+        // logo: '/icon.png',
+        // contextmenu: [{ text: '关于', link: '' }],
       });
 
       bindSomeEvents();
     }
   }, [videoInfo]);
   return (
-    <div
+    <NormalPageBlockWrapper
       style={{
         position: 'relative',
         width: '100%',
-        maxWidth: `${MAX_WIDTH}px`,
-        margin: '0 auto',
       }}
     >
       {/* name */}
@@ -144,6 +143,6 @@ export default function Player({
       </div>
       {/* detail */}
       <DetailInfo detail={videoInfo} />
-    </div>
+    </NormalPageBlockWrapper>
   );
 }
