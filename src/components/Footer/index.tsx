@@ -22,7 +22,9 @@ export default function Footer() {
         <div className={styles.entrances}>
           <Link to="/">{PAGE_TITLE}</Link>
           <Link to="/terms">条款</Link>
-          <Link to="/group">官方群</Link>
+          <a href="https://t.me/wuma666888" target="_blank">
+            官方群
+          </a>
           <Link to="/business">商务合作</Link>
         </div>
         <p className={styles.warning}>{WarningList.join('')}</p>
