@@ -25,7 +25,10 @@ export default function Footer() {
           <a href="https://t.me/wuma666888" target="_blank">
             官方群
           </a>
-          <Link to="/business">商务合作</Link>
+          {/* <Link to="/business">商务合作</Link> */}
+          <a href="https://t.me/wuma3499" target="_blank">
+            商务合作
+          </a>
         </div>
         <p className={styles.warning}>{WarningList.join('')}</p>
         <p className={styles.copyright}>

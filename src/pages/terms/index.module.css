@@ -1,0 +1,28 @@
+.termsH1 {
+  margin: 1.5rem 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.termsContent {
+  color: #ddd;
+  & > h2 {
+    margin: 2rem 0 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  & > p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+  & > ul {
+    margin-top: 0;
+    margin-left: 1.7rem;
+    list-style: disc;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    li {
+      /*  */
+    }
+  }
+}
