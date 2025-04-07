@@ -3,6 +3,7 @@ import { definePageConfig, useParams } from 'ice';
 
 import { PAGE_TITLE } from '@/config/video';
 import { queryVideoDetail, videoActionView } from '@/api';
+import { useEnsurePageToTop } from '@/hooks';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import Player from '@/components/Biz/Player';
 import BlockList from '@/components/Biz/BlockList';
@@ -35,9 +36,10 @@ export default function Detail() {
   useEffect(() => {
     if (params.id) {
       fetchData(params.id);
-      window.scrollTo(0, 0);
     }
   }, [params.id]);
+
+  useEnsurePageToTop();
 
   return (
     <>

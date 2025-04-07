@@ -1,11 +1,14 @@
 import { definePageConfig } from 'ice';
 
+import { useEnsurePageToTop } from '@/hooks';
 import NormalPageBlockWrapper from '@/components/NormalPageBlockWrapper';
 import AdsBanner from '@/components/Biz/AdsBanner';
 
 import styles from './index.module.css';
 
 export default function Terms() {
+  useEnsurePageToTop();
+
   return (
     <NormalPageBlockWrapper>
       <AdsBanner />

@@ -1,16 +1,14 @@
-import { useEffect } from 'react';
 import { definePageConfig, useSearchParams } from 'ice';
 
 import { PAGE_TITLE } from '@/config/video';
+import { useEnsurePageToTop } from '@/hooks';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import BlockList from '@/components/Biz/BlockList';
 
 export default function Tag() {
   const [searchParams] = useSearchParams();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEnsurePageToTop();
 
   return (
     <>
