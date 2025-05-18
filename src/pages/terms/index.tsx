@@ -1,5 +1,3 @@
-import { definePageConfig } from 'ice';
-
 import { useEnsurePageToTop } from '@/hooks';
 import NormalPageBlockWrapper from '@/components/NormalPageBlockWrapper';
 import AdsBanner from '@/components/Biz/AdsBanner';
@@ -136,9 +134,3 @@ export default function Terms() {
     </NormalPageBlockWrapper>
   );
 }
-
-export const pageConfig = definePageConfig(() => {
-  return {
-    title: '条款',
-  };
-});

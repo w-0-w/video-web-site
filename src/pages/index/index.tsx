@@ -1,6 +1,3 @@
-import { definePageConfig } from 'ice';
-
-import { PAGE_TITLE } from '@/config/video';
 import { useEnsurePageToTop } from '@/hooks';
 import AdsBanner from '@/components/Biz/AdsBanner';
 import BlockList from '@/components/Biz/BlockList';
@@ -17,10 +14,3 @@ export default function Index() {
     </>
   );
 }
-
-export const pageConfig = definePageConfig(() => {
-  return {
-    auth: ['admin', 'user'],
-    title: PAGE_TITLE,
-  };
-});

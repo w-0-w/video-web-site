@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { definePageConfig, useParams } from 'ice';
+import { useParams } from 'ice';
 
-import { PAGE_TITLE } from '@/config/video';
 import { queryVideoDetail, videoActionView } from '@/api';
 import { useEnsurePageToTop } from '@/hooks';
 import AdsBanner from '@/components/Biz/AdsBanner';
@@ -50,9 +49,3 @@ export default function Detail() {
     </>
   );
 }
-
-export const pageConfig = definePageConfig(() => {
-  return {
-    title: PAGE_TITLE,
-  };
-});

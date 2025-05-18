@@ -1,5 +1,3 @@
-import { definePageConfig } from 'ice';
-
 import NormalPageBlockWrapper from '@/components/NormalPageBlockWrapper';
 
 export default function Success() {
@@ -26,9 +24,3 @@ export default function Success() {
     </NormalPageBlockWrapper>
   );
 }
-
-export const pageConfig = definePageConfig(() => {
-  return {
-    title: '50x',
-  };
-});
